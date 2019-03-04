@@ -1,10 +1,14 @@
 {
   "name": "watersoftener-client",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A client library to communication with the Grünbeck softliQ:SC18 watersoftener",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vodaza36/watersoftener-client"
   },
   "keywords": [
     "SC18",
