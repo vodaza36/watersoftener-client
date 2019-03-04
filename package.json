@@ -1,0 +1,29 @@
+{
+  "name": "watersoftener-client",
+  "version": "0.0.1",
+  "description": "A client library to communication with the Grünbeck softliQ:SC18 watersoftener",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SC18",
+    "watersoftener",
+    "Grünbeck",
+    "softliQ"
+  ],
+  "author": "Thomas Hochbichler",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
