@@ -28,6 +28,14 @@ const getActDate = (daysOffset) => {
   return mm + '/' + dd + '/' + y
 }
 
+const createJsonResponseWaterConsumption = (date, consumption) => {
+  return {
+    date,
+    consumption,
+    'unit': 'litres'
+  }
+}
+
 const getWaterConsumptionHistory = () => {
   return new Promise((resolve, reject) => {
     client.getWaterConsumptionHistory()
@@ -40,11 +48,11 @@ const getWaterConsumptionHistory = () => {
           const history = []
           let i = 1
           for (const p of extractParams) {
-            history.push({
-              'date': getActDate(i++),
-              'consumption': extractParamValue(p),
-              'unit': 'litres'
-            })
+            history.push(
+              createJsonResponseWaterConsumption(
+                getActDate(i++), extractParamValue(p)
+              )
+            )
           }
           resolve(history)
         }
@@ -52,6 +60,24 @@ const getWaterConsumptionHistory = () => {
   })
 }
 
+const getWaterConsumptionYesterday = () => {
+  return new Promise((resolve, reject) => {
+    client.getWaterConsumptionYesterday()
+      .then(result => parseString(result.data, (err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          const extractParam = getResponseParams(res)[0]
+          const extractParamValue = getResponseParamValue(res)
+          resolve(createJsonResponseWaterConsumption(
+            getActDate(1), extractParamValue(extractParam)
+          ))
+        }
+      }))
+  })
+}
+
 module.exports = {
-  getWaterConsumptionHistory
+  getWaterConsumptionHistory,
+  getWaterConsumptionYesterday
 }
