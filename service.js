@@ -16,6 +16,18 @@ const getResponseParamValue = (jsonResponse) => (parameter) => {
   return jsonResponse.data[parameter][0]
 }
 
+const getActDate = (daysOffset) => {
+  const actDate = new Date()
+  const newDate = new Date(actDate)
+  newDate.setDate(newDate.getDate() - daysOffset)
+
+  var dd = newDate.getDate()
+  var mm = newDate.getMonth() + 1
+  var y = newDate.getFullYear()
+
+  return mm + '/' + dd + '/' + y
+}
+
 const getWaterConsumptionHistory = () => {
   return new Promise((resolve, reject) => {
     client.getWaterConsumptionHistory()
@@ -27,11 +39,9 @@ const getWaterConsumptionHistory = () => {
           const extractParamValue = getResponseParamValue(res)
           const history = []
           let i = 1
-          const actDate = new Date()
           for (const p of extractParams) {
-            i++
             history.push({
-              'date': actDate.getDate() + i,
+              'date': getActDate(i++),
               'consumption': extractParamValue(p),
               'unit': 'litres'
             })
