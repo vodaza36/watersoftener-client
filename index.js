@@ -1,8 +1,9 @@
-const service = require('./service')
-const dotenv = require('dotenv')
+const client = require('./service')
 
-dotenv.config()
+// returns the water consumption of the last 14-days
+const history = client.getWaterConsumptionHistory()
+  .then(result => console.log('History: ', result))
 
-service.getWaterConsumptionHistory()
-  .then((result) => console.log('Result: ', result))
-  .catch(err => console.error('ERROR: ', err))
+// returns yesterdays water consumption
+const yesterday = client.getWaterConsumptionYesterday()
+  .then(result => console.log('Yesterday: ', result))

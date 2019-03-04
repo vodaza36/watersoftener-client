@@ -1,11 +1,12 @@
 require('dotenv').config()
 const axios = require('axios')
-const baseURL = `http://${process.env.WATERSOFTENER_IP}/mux_http`
+const ip = process.env.WATERSOFTENER_IP || '127.0.0.1'
+const baseURL = `http://${ip}/mux_http`
 
 const client = axios.create({
   baseURL
 })
-const clientId = '625'
+const clientId = process.env.CLIENT_ID || 'n1'
 const createBody = (body) => `id=${clientId}&${body}`
 
 const getWaterConsumptionHistory = () => {
