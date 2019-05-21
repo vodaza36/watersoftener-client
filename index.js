@@ -1,7 +1,7 @@
 const service = require('./service')
 
-if (!process.env.WATERSOFTENER_IP) {
-  console.log('Environment variable WATERSOFTENER_IP not defined!')
+if (!process.env.WATER_SOFTENER_BASE_URL) {
+  console.log('Environment variable WATER_SOFTENER_BASE_URL not defined!')
   process.exit(-1)
 }
 

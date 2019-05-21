@@ -1,5 +1,5 @@
 # watersoftener-client
-A NodeJS client library to communication with the Grünbeck softliQ:SC18 watersoftener
+A NodeJS client library to communication with the Grünbeck softliQ:SC18 water softener
 
 ## Install
 ```
@@ -26,8 +26,8 @@ Following environment variables must be defined:
 
 | ENV | Description |
 | --- | ----------- |
-| WATERSOFTENER_IP | IP address of your watersoftener in your local LAN |
-| CLIENT_ID | A unique ID that identifies your client |
+| WATER_SOFTENER_BASE_URL | Full qualified HTTP path of your water softener API in your local LAN |
+| WATER_SOFTENER_CLIENT_ID | A unique ID that identifies your client |
 
 
 
