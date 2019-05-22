@@ -36,6 +36,13 @@ const createJsonResponseWaterConsumption = (date, consumption) => {
   }
 }
 
+const createJsonResponseWaterRaw= (day, consumption) => {
+  return {
+    day,
+    consumption
+  }
+}
+
 const getWaterConsumptionHistory = () => {
   return new Promise((resolve, reject) => {
     client.getWaterConsumptionHistory()
@@ -77,7 +84,32 @@ const getWaterConsumptionYesterday = () => {
   })
 }
 
+const getWaterConsumptionRaw = () => {
+  return new Promise((resolve, reject) => {
+    client.getWaterConsumptionHistory()
+      .then(result => parseString(result.data, (err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          const extractParams = getResponseParams(res)
+          const extractParamValue = getResponseParamValue(res)
+          const history = []
+          let i = 1
+          for (const p of extractParams) {
+            history.push(
+              createJsonResponseWaterRaw(
+                i++, extractParamValue(p)
+              )
+            )
+          }
+          resolve(history)
+        }
+      }))
+  })
+}
+
 module.exports = {
   getWaterConsumptionHistory,
-  getWaterConsumptionYesterday
+  getWaterConsumptionYesterday,
+  getWaterConsumptionRaw
 }
