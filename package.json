@@ -1,6 +1,6 @@
 {
   "name": "watersoftener-client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A client library to communication with the Grünbeck softliQ:SC18 watersoftener",
   "main": "index.js",
   "scripts": {
