@@ -19,6 +19,11 @@ const history = client.getWaterConsumptionHistory()
 const yesterday = client.getWaterConsumptionYesterday()
   .then(result => console.log('Yesterday: ', result))
  
+
+// returns the water consumption of the last 14-days, without any date assumptions
+const yesterday = client.getWaterConsumptionRaw()
+  .then(result => console.log('Raw: ', result))
+
 ```
 
 ## Configuration
